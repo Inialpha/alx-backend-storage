@@ -13,7 +13,6 @@ CREATE PROCEDURE AddBonus(
     SELECT id INTO project_id
       FROM projects
       WHERE projects.name = project_name;
-    SELECT * FROM projects;
 
     IF project_id IS NULL THEN
 	INSERT INTO projects (name) VALUES (project_name);
