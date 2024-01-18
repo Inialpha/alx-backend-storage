@@ -11,6 +11,8 @@ CREATE TRIGGER check_email
 	  ELSE
 	    SET NEW.valid_email = 1;
 	  END IF;
+	ELSE
+          SET NEW.valid_email = NEW.valid_email;
         END IF;
       END $$
 DELIMITER ;
