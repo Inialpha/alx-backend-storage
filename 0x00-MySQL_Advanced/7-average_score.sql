@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
 
 DELIMITER $$
 
-CREATE PROCEDURE ComputeAverageScoreForUser(user_id INT)
+CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
 
 BEGIN
     DECLARE avg_score INT;
