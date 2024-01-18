@@ -26,4 +26,3 @@ CREATE PROCEDURE AddBonus(
 
 
 DELIMITER ;
-    
