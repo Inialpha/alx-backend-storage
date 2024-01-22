@@ -19,7 +19,7 @@ if __name__ == '__main__':
     #print count for all methods
     for method in methods:
         count = nginx_logs.count_documents({'method': method})
-        print("    method {}: {}".format(method, count))
+        print("\tmethod {}: {}".format(method, count))
 
     status = nginx_logs.count_documents({'method': 'GET', 'path': '/status'})
     print(f"{status} status check")
