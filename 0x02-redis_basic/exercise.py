@@ -77,4 +77,4 @@ class Cache:
 
     def get_int(self, key: str) -> int:
         """ get an int """
-        return self.get(key, str)
+        return self.get(key, int)
