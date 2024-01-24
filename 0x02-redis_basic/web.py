@@ -6,6 +6,7 @@ from functools import wraps
 from typing import Callable
 cache = redis.Redis()
 
+
 def counter(method: Callable) -> Callable:
     """ set an expiration on a key """
 
@@ -31,5 +32,6 @@ def get_page(url: str) -> str:
     """ get a url respobse """
 
     return requests.get(url).text
+
 
 print(get_page('http://slowwly.robertomurray.co.uk'))
