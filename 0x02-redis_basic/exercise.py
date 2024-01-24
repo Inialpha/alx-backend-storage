@@ -32,7 +32,7 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
-def replay(fn: Callable) -> Any:
+def replay(fn: Callable) -> None:
     """ print function call details """
     fn_name = fn.__qualname__
     input_key = f"{fn_name}:inputs"
