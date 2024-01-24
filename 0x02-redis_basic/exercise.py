@@ -21,7 +21,7 @@ def call_history(method: Callable) -> Callable:
     """ keep track of methods inputs and output
     """
     @wraps(method)
-    def wrapper(self, *args, **kwargs) -> Any:
+    def wrapper(self, *args, **kwargs) -> str:
         """ wrapper function """
         input_key = f"{method.__qualname__}:inputs"
         output_key = f"{method.__qualname__}:outputs"
