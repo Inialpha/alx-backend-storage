@@ -66,7 +66,7 @@ class Cache:
 
     def get(self, key: str, fn: Callable = None) -> Any:
         data = self._redis.get(key)
-        if key in self._redis:
+        if data:
             if fn:
                 return fn(data)
         return data
