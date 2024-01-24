@@ -16,6 +16,7 @@ def count_calls(method: Callable) -> Callable:
         return method(self, *args, **kwargs)
     return wrapper
 
+
 def call_history(method: Callable) -> Callable:
     """ keep track of methods inputs and output
     """
@@ -28,6 +29,7 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(output_key, output)
         return output
     return wrapper
+
 
 def replay(fn: Callable) -> Any:
     """ print function call details """
@@ -42,8 +44,6 @@ def replay(fn: Callable) -> Any:
     for inp, oup in zip(input_list, output_list):
         print(f"{fn_name}(*({inp},)) -> {oup}")
 
-    
-
 
 class Cache:
     """
@@ -54,8 +54,7 @@ class Cache:
         """ initialize a Cache instance """
         self._redis = redis.Redis()
         self._redis.flushdb()
-        
-        
+
     @count_calls
     @call_history
     def store(self, data: Any) -> str:
