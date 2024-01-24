@@ -43,7 +43,7 @@ def replay(fn: Callable) -> Any:
     input_list = cache._redis.lrange(input_key, 0, -1)
     print(f"{fn_name} was called {num} times:")
     for inp, oup in zip(input_list, output_list):
-        print("{}(*({},)) -> {}".format(fn_name, inp, oup))
+        print("{}(*({},)) -> {}".format(fn_name, inp.decode('utf-8'), oup))
 
 
 class Cache:
