@@ -2,7 +2,7 @@
 """ module for Cache class """
 import redis
 from uuid import uuid4
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Union
 from functools import wraps
 
 
