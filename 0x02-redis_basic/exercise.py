@@ -66,6 +66,7 @@ class Cache:
         return key
 
     def get(self, key: str, fn: Callable = None) -> Any:
+        """ get item from database """
         data = self._redis.get(key)
         if data:
             if fn:
