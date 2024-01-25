@@ -11,16 +11,17 @@ def counter(method: Callable) -> Callable:
     """ set an expiration on a key """
 
     @wraps(method)
-    def wrapper(*args, **kwargs) -> Callable:
+    def wrapper(url) -> Callable:
         """ function wrapper """
-        count_key = f"count:{args}"
-        result_key = f"{args}"
+        count_key = f"count:{url}"
+        print(count_key)
+        result_key = f"{url}"
 
         cache.incr(count_key)
         result = cache.get(result_key)
         if result:
             return result.decode('utf8')
-        result = method(*args)
+        result = method(url)
         cache.set(count_key, 0)
         cache.setex(result_key, 10, str(result))
         return result
@@ -31,4 +32,4 @@ def counter(method: Callable) -> Callable:
 def get_page(url: str) -> str:
     """ get a url respobse """
 
-    return requests.get(url).text
+    return requests.get(url)
