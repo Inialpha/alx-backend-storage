@@ -15,7 +15,7 @@ def counter(method: Callable) -> Callable:
         """ function wrapper """
         count_key = f"count:{url}"
         print(count_key)
-        result_key = f"{url}"
+        result_key = f"result:{url}"
 
         cache.incr(count_key)
         result = cache.get(result_key)
@@ -23,7 +23,7 @@ def counter(method: Callable) -> Callable:
             return result.decode('utf8')
         result = method(url)
         cache.set(count_key, 0)
-        cache.setex(result_key, 10, str(result))
+        cache.setex(result_key, 10, result)
         return result
     return wrapper
 
